@@ -26,7 +26,7 @@ Please note that the environments above correspond to the second version of the 
 The main file that will take care of initializing the environment, doing the training, and running a trained agent in the environment is the Continuous_Control.ipynb file. Before running this file, ensure that the following files are at the same location as the Continuous_Control.ipynb file:
 - dqn_agent.py
 - model.py
-- Banana.app
+- Reacher.app
 - checkpoint.pth
 
 ### 4. Importing all the libraries
