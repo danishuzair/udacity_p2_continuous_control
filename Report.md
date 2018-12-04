@@ -8,15 +8,15 @@ The environment that had to be solved consisted of twenty agents. Each agent was
 
 The actions available were a vector of four numbers, corresponding to torque applied to the agents two joints. 
 
-The rewards were setup such that for each timestep that the agents hand were inside the target location, the agent receives a reward of +0.1 To "solve" the environment, the goal was to have an average reward of +30 over the previous 100 episodes. This is averaged over all 20 agents.
+The rewards were setup such that for each timestep that the agents hand were inside the target location, the agent receives a reward of +0.1. To "solve" the environment, the goal was to have an average reward of +30 over the previous 100 episodes. This is averaged over all 20 agents.
 
 ### 2. Deep Deterministic Policy Gradient (DDPG)
 DDPG is a policy-based method which tries to directly find the optimal policy without first trying to find the optimal action-value function. Furthermore, DDPG is able to deal with a continuous action-space. At some level, DDPG is closer to Deep Q-Learning than being a action-critic method, with a major improvement over Deep Q-Learning being that it can deal with a continuous action-space.
 
 The DDPG learning method is setup as follows:
-1. DDPG uses two neural networks
-a. An "actor neural network" determines the best action for any given state.
-b. A "critic neural network" evaluates the optimal action-value function by using the actors best believed action.
+DDPG uses two neural networks
+- An "actor neural network" determines the best action for any given state.
+- A "critic neural network" evaluates the optimal action-value function by using the actors best believed action.
 
 DDPG reuses some of the strategies that were used with Deep Q-Learning. Two of the more important ones are the following:
 1. Experience replay
