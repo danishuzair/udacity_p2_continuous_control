@@ -13,7 +13,7 @@ The rewards were setup such that for each timestep that the agents hand were ins
 ### 2. Deep Deterministic Policy Gradient (DDPG)
 DDPG is a policy-based method which tries to directly find the optimal policy without first trying to find the optimal action-value function. Furthermore, DDPG is able to deal with a continuous action-space. At some level, DDPG is closer to Deep Q-Learning than being a action-critic method, with a major improvement over Deep Q-Learning being that it can deal with a continuous action-space.
 
-The DDPG learning method is setup as follows:
+The DDPG learning method is setup as follows:<br/>
 DDPG uses two neural networks
 - An "actor neural network" determines the best action for any given state.
 - A "critic neural network" evaluates the optimal action-value function by using the actors best believed action.
