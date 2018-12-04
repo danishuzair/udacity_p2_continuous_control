@@ -29,7 +29,9 @@ DDPG does not really use Fixed Q-targets (as it does not calculate Q-values like
 For the regular and target networks, DDPG adds what is called "soft updates" over the update process used in Deep Q-Learning. In Deep Q-Learning, it was setup in such a way that every C steps the regular network overwrites the target network to get a new target network. With soft updates, instead of making an update every C steps, the target network is updated at every step by mixing in 0.01% of the regular weights into the weight of the target network. This has been proven to lead to faster convergence.
 
 ### 3. Neural network architecture and hyperparameters
-Both the actor and critic neural networks had the same basic structure. The architecture of those are as follows.
+Both the actor and critic neural networks had the same basic structure. The architecture of those are listed below.
+
+It has to be noted that in the initial attempts at "solving" the environment, a smaller neural network was used. This lead to very slow learning, and in many cases the average reward never exceeded 2. Initially, it was attempted to tune the hyperparameters such as buffer size, batch size, discounting factor, learning rates for the actor and the critic, along with introducing an epsilon-greedy action selection. None of these resulted in significant improvements to the reward obtained. Finally, it was decided to go back to the initial values of the above listed hyperparameters, and to try with a larger neural network, by increasing the number of dimensions of the second and third layers of the neural network, without adding any additional layers. This lead to marked improvements in the learning process, and it was able to "solve" the environment without tuning any other hyperparameters.
 
 The input to the neural network was the current state of the agent, which had a dimension of 33. The neural network had 3 layers, which each layer being fully connected. The details of the layers are as follows:
 - Layer 1: Fully connected - 33 dimension input, 512 dimension output, Relu activation function
@@ -68,7 +70,7 @@ As DDPG has origins from DQN, it is theorized that the techniques that are prove
 In addition, other actor-critic methods such as A2C and A3C should also be tried to compare the performance with DDPG.
 
 ### 7. Conclusion
-I was able to successfully train agents using Deep Q-Learning. The first agent that was trained based on a commulative reward of 13 had issues where it often got stuck in an infinite loop, and would then obtain a very small commulative reward. This was mostly solved by training longer, and having an agent based on a commulative rewaard of 17, but that issue of infinite loop was still seen occasionally (althought it was very rare). To hopefully be able to completely solve this infinite loop issue, it was proposed that a prioritized experience replay should be used in the learning process.
+I was able to successfully "solve" the continuous control environment using Deep Deterministic Policy Gradient. The training took 33 episodes to complete, and a trained agent running in the environment was able to obtain a reward of 38.4. For future work, the "rainbow" techniques have been proposed, along with other actor-critic methods such as A2C and A3C to see how their performances compare with the performances of DDPG.
 
 ### 8. References
 Please note that the code used originates from the DDPG code that was provided in the Udacity Deep Reinforcement Learning class, and then modifcations were done to make it applicable for the specific environment that was solved. Similarly, some of the content of the README file originates from the Udacity Deep Reinforcement Learning class, as well as from my submission for the first project of this class.
